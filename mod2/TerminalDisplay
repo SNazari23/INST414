@@ -1,0 +1,152 @@
+============================================================
+INVESTMENT FIRM STOCK HOLDINGS ANALYSIS
+============================================================
+
+Fidelity Portfolio Analysis:
+   Total stocks held: 65
+   Top 5 holdings:
+     SQ: 7.57%
+     SBUX: 4.69%
+     WFC: 4.41%
+     SCHW: 3.98%
+     IBM: 3.83%
+   Portfolio concentration: 0.027
+
+ Charles Schwab Portfolio Analysis:
+   Total stocks held: 62
+   Top 5 holdings:
+     WMT: 12.95%
+     T: 9.13%
+     DFS: 7.23%
+     AAPL: 4.79%
+     COST: 3.51%
+   Portfolio concentration: 0.046
+
+BlackRock Portfolio Analysis:
+   Total stocks held: 59
+   Top 5 holdings:
+     LMT: 8.46%
+     IBM: 7.48%
+     DIS: 6.73%
+     REGN: 6.2%
+     BLK: 4.87%
+   Portfolio concentration: 0.037
+
+Blackstone Portfolio Analysis:
+   Total stocks held: 36
+   Top 5 holdings:
+     SCHW: 13.16%
+     GE: 12.06%
+     TSLA: 9.74%
+     SLB: 6.14%
+     COF: 5.86%
+   Portfolio concentration: 0.066
+
+Morgan Stanley Portfolio Analysis:
+   Total stocks held: 25
+   Top 5 holdings:
+     AXP: 13.56%
+     LMT: 10.34%
+     MCD: 10.06%
+     DE: 8.36%
+     PG: 5.89%
+   Portfolio concentration: 0.066
+
+ J.P. Morgan Portfolio Analysis:
+   Total stocks held: 39
+   Top 5 holdings:
+     EOG: 7.81%
+     DHR: 6.71%
+     HON: 6.27%
+     CRM: 5.88%
+     TMUS: 4.87%
+   Portfolio concentration: 0.039
+
+ Goldman Sachs Portfolio Analysis:
+   Total stocks held: 41
+   Top 5 holdings:
+     T: 11.93%
+     SLB: 8.27%
+     WFC: 6.76%
+     META: 4.96%
+     UNH: 4.81%
+   Portfolio concentration: 0.047
+
+ Vanguard Portfolio Analysis:
+   Total stocks held: 59
+   Top 5 holdings:
+     BA: 7.8%
+     WMT: 6.11%
+     ORCL: 6.02%
+     MMM: 5.75%
+     META: 5.41%
+   Portfolio concentration: 0.037
+
+ UBS Portfolio Analysis:
+   Total stocks held: 72
+   Top 5 holdings:
+     CVS: 6.81%
+     KO: 5.28%
+     ABT: 4.7%
+     C: 3.89%
+     TXN: 3.07%
+   Portfolio concentration: 0.025
+
+ T. Rowe Price Portfolio Analysis:
+   Total stocks held: 58
+   Top 5 holdings:
+     AMD: 5.83%
+     SQ: 5.5%
+     CAT: 4.96%
+     WFC: 4.75%
+     BIIB: 4.04%
+   Portfolio concentration: 0.027
+
+ Most Commonly Held Stocks Across All Firms:
+   JPM: Held by 9 firms
+     Largest holder: Morgan Stanley (3.64%)
+   MA: Held by 9 firms
+     Largest holder: Morgan Stanley (4.25%)
+   WFC: Held by 9 firms
+     Largest holder: Goldman Sachs (6.76%)
+   WMT: Held by 8 firms
+     Largest holder: Charles Schwab (12.95%)
+   SCHW: Held by 8 firms
+     Largest holder: Blackstone (13.16%)
+   TSLA: Held by 8 firms
+     Largest holder: Blackstone (9.74%)
+   TMO: Held by 8 firms
+     Largest holder: Blackstone (4.67%)
+   USB: Held by 8 firms
+     Largest holder: Goldman Sachs (1.98%)
+   CVS: Held by 8 firms
+     Largest holder: UBS (6.81%)
+   SBUX: Held by 8 firms
+     Largest holder: Fidelity (4.69%)
+
+ Firm Relationships:
+   Fidelity ↔ BlackRock (same_category)
+   Fidelity ↔ Vanguard (same_category)
+   Fidelity ↔ T. Rowe Price (same_category)
+   Fidelity ↔ Goldman Sachs (strategic_partner)
+   Fidelity ↔ Charles Schwab (strategic_partner)
+   Charles Schwab ↔ UBS (same_category)
+   BlackRock ↔ Vanguard (same_category)
+   BlackRock ↔ T. Rowe Price (same_category)
+   BlackRock ↔ J.P. Morgan (strategic_partner)
+   Blackstone ↔ Goldman Sachs (strategic_partner)
+   Morgan Stanley ↔ J.P. Morgan (same_category)
+   Morgan Stanley ↔ Goldman Sachs (same_category)
+   Morgan Stanley ↔ Vanguard (strategic_partner)
+   Morgan Stanley ↔ UBS (strategic_partner)
+   J.P. Morgan ↔ Goldman Sachs (same_category)
+   Vanguard ↔ T. Rowe Price (same_category)
+
+============================================================
+SUMMARY STATISTICS
+============================================================
+Total firms: 10
+Total stocks in network: 80
+Total relationships: 532
+
+Total relationships: 532
