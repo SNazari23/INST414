@@ -3,4 +3,4 @@ These projects helped strengthen my ability to turn raw data into meaningful ins
 
 Medium Blog: https://medium.com/@snazari 
 
-https://upload.wikimedia.org/wikipedia/commons/0/0d/Medium_%28website%29_logo.svg
+https://upload.wikimedia.org/wikipedia/commons/0/0d/Medium_%28website%29_logo.svg 
