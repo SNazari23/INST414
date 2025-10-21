@@ -12,7 +12,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id,
 
 # Playlists for different sports
 playlists = {
-    "gym": "61ffYFj8I4jMQeSE4SZWKF",   # Replace with real playlist IDs
+    "gym": "61ffYFj8I4jMQeSE4SZWKF", 
     "running": "37i9dQZF1DXdxcBWuJkbcy"
 }
 
