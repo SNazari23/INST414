@@ -1,0 +1,117 @@
+# Import necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import seaborn as sns
+
+# -------------------------------
+# 1. Load the dataset
+# -------------------------------
+# Replace the filename with your dataset file
+df = pd.read_csv("Social_Network_Ads.csv")
+
+# Preview the data
+print("Sample of dataset:")
+print(df.head(), "\n")
+
+# Select only relevant features
+X = df[['Age', 'EstimatedSalary']]
+
+# -------------------------------
+# 2. Feature scaling (important for KMeans)
+# -------------------------------
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# -------------------------------
+# 3. Use Elbow Method to find optimal k
+# -------------------------------
+wcss = []  # within-cluster sum of squares
+for k in range(1, 11):
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    kmeans.fit(X_scaled)
+    wcss.append(kmeans.inertia_)
+
+# Plot elbow curve
+plt.plot(range(1, 11), wcss, marker='o')
+plt.title("Elbow Method for Optimal k")
+plt.xlabel("Number of Clusters (k)")
+plt.ylabel("WCSS")
+plt.grid(True)
+plt.show()
+
+# -------------------------------
+# 4. Train final KMeans model (choose k=3 based on elbow)
+# -------------------------------
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+df['Cluster'] = kmeans.fit_predict(X_scaled)
+
+# -------------------------------
+# 5. Analyze the clusters
+# -------------------------------
+cluster_summary = df.groupby('Cluster').agg({
+    'Age': 'mean',
+    'EstimatedSalary': 'mean',
+    'Purchased': 'mean'
+}).rename(columns={'Purchased': 'PercentPurchased'})
+
+print("\nCluster Summary (averages):")
+print(cluster_summary, "\n")
+
+# -------------------------------
+# 6. Visualize clusters
+# -------------------------------
+plt.figure(figsize=(8,6))
+plt.scatter(df['Age'], df['EstimatedSalary'], c=df['Cluster'], cmap='viridis', s=50)
+plt.title("Customer Clusters by Age and Salary")
+plt.xlabel("Age")
+plt.ylabel("Estimated Salary ($)")
+plt.grid(True)
+plt.show()
+
+# -------------------------------
+# 7. Example: interpret clusters
+# -------------------------------
+for c in cluster_summary.index:
+    avg_age = cluster_summary.loc[c, 'Age']
+    avg_salary = cluster_summary.loc[c, 'EstimatedSalary']
+    purchase_rate = cluster_summary.loc[c, 'PercentPurchased'] * 100
+    print(f"Cluster {c}: Avg Age={avg_age:.1f}, Avg Salary=${avg_salary:,.0f}, Purchase Rate={purchase_rate:.1f}%")
+
+
+
+# -------------------------------
+# 8. Visualize Purchase Rate by Age Range
+# -------------------------------
+
+# Create age bins and labels
+bins = [17, 28, 45, 100]
+labels = ['18–28', '29–45', '46+']
+
+# Add AgeRange column to the dataframe
+df['AgeRange'] = pd.cut(df['Age'], bins=bins, labels=labels)
+
+# Group by age range and calculate average purchase rate
+age_group_summary = df.groupby('AgeRange')['Purchased'].mean().reset_index()
+
+plt.figure(figsize=(8,6))
+sns.barplot(
+    data=age_group_summary,
+    x='AgeRange',
+    y='Purchased',
+    palette='viridis'
+)
+
+plt.title("Average Purchase Rate by Age Range")
+plt.xlabel("Age Range")
+plt.ylabel("Percent Purchased")
+plt.ylim(0, 1)
+plt.grid(True, linestyle='--', alpha=0.5)
+
+# Add value labels on top of bars
+for i, v in enumerate(age_group_summary['Purchased']):
+    plt.text(i, v + 0.02, f"{v*100:.1f}%", ha='center', fontweight='bold')
+
+plt.tight_layout()
+plt.show()
