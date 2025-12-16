@@ -1,0 +1,511 @@
+firm,stock,weight_percentage,investment_style,sector_bias
+Fidelity,PG,1.33,active_equity,growth
+Fidelity,DE,0.91,active_equity,growth
+Fidelity,ABT,0.63,active_equity,growth
+Fidelity,AXP,1.56,active_equity,growth
+Fidelity,C,0.46,active_equity,growth
+Fidelity,V,0.22,active_equity,growth
+Fidelity,TSLA,1.04,active_equity,growth
+Fidelity,GILD,0.34,active_equity,growth
+Fidelity,VZ,3.22,active_equity,growth
+Fidelity,GS,0.34,active_equity,growth
+Fidelity,TGT,0.26,active_equity,growth
+Fidelity,VRTX,0.97,active_equity,growth
+Fidelity,AAPL,3.32,active_equity,growth
+Fidelity,DFS,0.23,active_equity,growth
+Fidelity,INTC,0.69,active_equity,growth
+Fidelity,WFC,0.22,active_equity,growth
+Fidelity,BA,0.81,active_equity,growth
+Fidelity,NVDA,0.6,active_equity,growth
+Fidelity,COF,1.41,active_equity,growth
+Fidelity,CSCO,0.35,active_equity,growth
+Fidelity,NFLX,10.48,active_equity,growth
+Fidelity,JPM,1.06,active_equity,growth
+Fidelity,ADBE,2.83,active_equity,growth
+Fidelity,PNC,0.29,active_equity,growth
+Fidelity,SLB,0.11,active_equity,growth
+Fidelity,MCD,0.13,active_equity,growth
+Fidelity,MRNA,1.09,active_equity,growth
+Fidelity,UNH,0.64,active_equity,growth
+Fidelity,NOW,1.33,active_equity,growth
+Fidelity,TMUS,3.08,active_equity,growth
+Fidelity,COST,1.91,active_equity,growth
+Fidelity,BLK,2.73,active_equity,growth
+Fidelity,MA,2.73,active_equity,growth
+Fidelity,CRM,0.18,active_equity,growth
+Fidelity,MSFT,1.46,active_equity,growth
+Fidelity,AMGN,1.14,active_equity,growth
+Fidelity,REGN,2.61,active_equity,growth
+Fidelity,GOOGL,1.25,active_equity,growth
+Fidelity,RTX,0.89,active_equity,growth
+Fidelity,CVS,0.71,active_equity,growth
+Fidelity,HON,1.4,active_equity,growth
+Fidelity,MRK,3.18,active_equity,growth
+Fidelity,MS,1.01,active_equity,growth
+Fidelity,AMD,5.96,active_equity,growth
+Fidelity,T,0.37,active_equity,growth
+Fidelity,AMZN,1.45,active_equity,growth
+Fidelity,GE,2.29,active_equity,growth
+Fidelity,SCHW,1.41,active_equity,growth
+Fidelity,KO,0.38,active_equity,growth
+Fidelity,TXN,0.19,active_equity,growth
+Fidelity,META,0.2,active_equity,growth
+Fidelity,BIIB,0.36,active_equity,growth
+Fidelity,LMT,2.57,active_equity,growth
+Fidelity,ORCL,1.14,active_equity,growth
+Fidelity,BAC,0.17,active_equity,growth
+Fidelity,SQ,1.22,active_equity,growth
+Fidelity,PFE,0.81,active_equity,growth
+Fidelity,DIS,0.43,active_equity,growth
+Fidelity,WMT,2.85,active_equity,growth
+Fidelity,DHR,0.89,active_equity,growth
+Fidelity,COP,0.69,active_equity,growth
+Fidelity,LLY,1.72,active_equity,growth
+Fidelity,CVX,1.3,active_equity,growth
+Fidelity,NKE,2.84,active_equity,growth
+Fidelity,CAT,0.46,active_equity,growth
+Fidelity,SBUX,0.48,active_equity,growth
+Fidelity,IBM,0.48,active_equity,growth
+Fidelity,XOM,2.99,active_equity,growth
+Fidelity,PYPL,1.74,active_equity,growth
+Fidelity,PEP,2.13,active_equity,growth
+Fidelity,HD,0.76,active_equity,growth
+Fidelity,AVGO,0.34,active_equity,growth
+Charles Schwab,VZ,0.76,index_passive,broad_market
+Charles Schwab,ADBE,0.28,index_passive,broad_market
+Charles Schwab,TMUS,0.25,index_passive,broad_market
+Charles Schwab,JNJ,0.51,index_passive,broad_market
+Charles Schwab,HON,1.92,index_passive,broad_market
+Charles Schwab,SCHW,4.25,index_passive,broad_market
+Charles Schwab,KO,1.6,index_passive,broad_market
+Charles Schwab,EOG,1.25,index_passive,broad_market
+Charles Schwab,LMT,0.36,index_passive,broad_market
+Charles Schwab,AXP,0.34,index_passive,broad_market
+Charles Schwab,AAPL,0.42,index_passive,broad_market
+Charles Schwab,LOW,0.46,index_passive,broad_market
+Charles Schwab,NFLX,3.27,index_passive,broad_market
+Charles Schwab,PNC,0.98,index_passive,broad_market
+Charles Schwab,MRNA,0.17,index_passive,broad_market
+Charles Schwab,AMGN,0.21,index_passive,broad_market
+Charles Schwab,RTX,0.93,index_passive,broad_market
+Charles Schwab,MRK,0.36,index_passive,broad_market
+Charles Schwab,GE,3.89,index_passive,broad_market
+Charles Schwab,DHR,0.28,index_passive,broad_market
+Charles Schwab,CVX,4.51,index_passive,broad_market
+Charles Schwab,XOM,1.6,index_passive,broad_market
+Charles Schwab,DE,2.38,index_passive,broad_market
+Charles Schwab,GILD,0.5,index_passive,broad_market
+Charles Schwab,VRTX,2.54,index_passive,broad_market
+Charles Schwab,INTC,3.78,index_passive,broad_market
+Charles Schwab,NVDA,0.88,index_passive,broad_market
+Charles Schwab,SLB,8.36,index_passive,broad_market
+Charles Schwab,JPM,1.93,index_passive,broad_market
+Charles Schwab,COST,5.76,index_passive,broad_market
+Charles Schwab,CRM,1.68,index_passive,broad_market
+Charles Schwab,MSFT,0.44,index_passive,broad_market
+Charles Schwab,GOOGL,0.95,index_passive,broad_market
+Charles Schwab,WMT,2.7,index_passive,broad_market
+Charles Schwab,COP,0.41,index_passive,broad_market
+Charles Schwab,USB,1.93,index_passive,broad_market
+Charles Schwab,LLY,0.48,index_passive,broad_market
+Charles Schwab,CAT,1.92,index_passive,broad_market
+Charles Schwab,PG,7.75,index_passive,broad_market
+Charles Schwab,C,0.51,index_passive,broad_market
+Charles Schwab,GS,0.53,index_passive,broad_market
+Charles Schwab,TMO,0.67,index_passive,broad_market
+Charles Schwab,NOW,0.42,index_passive,broad_market
+Charles Schwab,MA,1.95,index_passive,broad_market
+Charles Schwab,QCOM,1.08,index_passive,broad_market
+Charles Schwab,T,1.35,index_passive,broad_market
+Charles Schwab,CVS,0.96,index_passive,broad_market
+Charles Schwab,AMD,8.78,index_passive,broad_market
+Charles Schwab,CMCSA,0.31,index_passive,broad_market
+Charles Schwab,META,1.15,index_passive,broad_market
+Charles Schwab,ORCL,2.36,index_passive,broad_market
+Charles Schwab,BAC,3.1,index_passive,broad_market
+Charles Schwab,SQ,0.4,index_passive,broad_market
+Charles Schwab,PFE,0.99,index_passive,broad_market
+Charles Schwab,DIS,0.24,index_passive,broad_market
+Charles Schwab,NKE,0.15,index_passive,broad_market
+Charles Schwab,SBUX,0.41,index_passive,broad_market
+Charles Schwab,HD,0.79,index_passive,broad_market
+BlackRock,MMM,1.16,index_passive,broad_market
+BlackRock,VZ,1.28,index_passive,broad_market
+BlackRock,CSCO,0.17,index_passive,broad_market
+BlackRock,ADBE,0.14,index_passive,broad_market
+BlackRock,UNH,3.26,index_passive,broad_market
+BlackRock,TMUS,0.84,index_passive,broad_market
+BlackRock,KO,0.38,index_passive,broad_market
+BlackRock,EOG,0.91,index_passive,broad_market
+BlackRock,PYPL,0.16,index_passive,broad_market
+BlackRock,AXP,1.27,index_passive,broad_market
+BlackRock,AAPL,1.85,index_passive,broad_market
+BlackRock,WFC,0.1,index_passive,broad_market
+BlackRock,LOW,0.69,index_passive,broad_market
+BlackRock,NFLX,1.37,index_passive,broad_market
+BlackRock,PNC,3.69,index_passive,broad_market
+BlackRock,AMGN,2.39,index_passive,broad_market
+BlackRock,REGN,1.68,index_passive,broad_market
+BlackRock,RTX,1.23,index_passive,broad_market
+BlackRock,MRK,2.78,index_passive,broad_market
+BlackRock,GE,0.78,index_passive,broad_market
+BlackRock,AMZN,0.96,index_passive,broad_market
+BlackRock,DFS,0.36,index_passive,broad_market
+BlackRock,CVX,1.42,index_passive,broad_market
+BlackRock,XOM,0.1,index_passive,broad_market
+BlackRock,ABT,0.35,index_passive,broad_market
+BlackRock,GILD,0.65,index_passive,broad_market
+BlackRock,TGT,0.58,index_passive,broad_market
+BlackRock,COF,0.47,index_passive,broad_market
+BlackRock,NVDA,6.39,index_passive,broad_market
+BlackRock,BA,0.11,index_passive,broad_market
+BlackRock,SLB,0.57,index_passive,broad_market
+BlackRock,MCD,12.48,index_passive,broad_market
+BlackRock,JPM,3.78,index_passive,broad_market
+BlackRock,COST,0.24,index_passive,broad_market
+BlackRock,BLK,1.98,index_passive,broad_market
+BlackRock,CRM,12.14,index_passive,broad_market
+BlackRock,MSFT,1.67,index_passive,broad_market
+BlackRock,GOOGL,1.09,index_passive,broad_market
+BlackRock,TXN,0.28,index_passive,broad_market
+BlackRock,WMT,0.31,index_passive,broad_market
+BlackRock,COP,0.41,index_passive,broad_market
+BlackRock,LLY,0.33,index_passive,broad_market
+BlackRock,CAT,0.35,index_passive,broad_market
+BlackRock,IBM,2.0,index_passive,broad_market
+BlackRock,PG,0.48,index_passive,broad_market
+BlackRock,C,0.93,index_passive,broad_market
+BlackRock,NOW,4.88,index_passive,broad_market
+BlackRock,MA,0.84,index_passive,broad_market
+BlackRock,QCOM,0.13,index_passive,broad_market
+BlackRock,T,0.12,index_passive,broad_market
+BlackRock,CVS,4.37,index_passive,broad_market
+BlackRock,MS,0.6,index_passive,broad_market
+BlackRock,AMD,0.22,index_passive,broad_market
+BlackRock,BIIB,3.34,index_passive,broad_market
+BlackRock,ORCL,3.33,index_passive,broad_market
+BlackRock,BAC,2.08,index_passive,broad_market
+BlackRock,SQ,0.11,index_passive,broad_market
+BlackRock,PFE,0.12,index_passive,broad_market
+BlackRock,DIS,1.31,index_passive,broad_market
+BlackRock,NKE,0.27,index_passive,broad_market
+BlackRock,SBUX,0.34,index_passive,broad_market
+BlackRock,HD,0.76,index_passive,broad_market
+Blackstone,PG,4.11,private_equity,value
+Blackstone,DE,25.83,private_equity,value
+Blackstone,TSLA,1.62,private_equity,value
+Blackstone,GS,3.09,private_equity,value
+Blackstone,WFC,2.48,private_equity,value
+Blackstone,NFLX,7.51,private_equity,value
+Blackstone,JPM,6.58,private_equity,value
+Blackstone,MRNA,9.44,private_equity,value
+Blackstone,COST,3.7,private_equity,value
+Blackstone,JNJ,0.54,private_equity,value
+Blackstone,CRM,0.33,private_equity,value
+Blackstone,GE,1.51,private_equity,value
+Blackstone,TXN,1.61,private_equity,value
+Blackstone,KO,1.89,private_equity,value
+Blackstone,BIIB,0.87,private_equity,value
+Blackstone,SQ,1.95,private_equity,value
+Blackstone,BAC,3.17,private_equity,value
+Blackstone,WMT,7.02,private_equity,value
+Blackstone,COP,4.34,private_equity,value
+Blackstone,DHR,2.41,private_equity,value
+Blackstone,CVX,8.5,private_equity,value
+Blackstone,XOM,1.42,private_equity,value
+Morgan Stanley,PG,0.85,investment_bank,financials
+Morgan Stanley,DE,4.02,investment_bank,financials
+Morgan Stanley,ABT,0.94,investment_bank,financials
+Morgan Stanley,AXP,1.36,investment_bank,financials
+Morgan Stanley,C,7.54,investment_bank,financials
+Morgan Stanley,V,0.91,investment_bank,financials
+Morgan Stanley,GILD,1.2,investment_bank,financials
+Morgan Stanley,GS,0.3,investment_bank,financials
+Morgan Stanley,VRTX,0.24,investment_bank,financials
+Morgan Stanley,WFC,4.3,investment_bank,financials
+Morgan Stanley,LOW,2.01,investment_bank,financials
+Morgan Stanley,CSCO,0.7,investment_bank,financials
+Morgan Stanley,NFLX,0.98,investment_bank,financials
+Morgan Stanley,JPM,6.1,investment_bank,financials
+Morgan Stanley,MCD,5.59,investment_bank,financials
+Morgan Stanley,SLB,1.34,investment_bank,financials
+Morgan Stanley,ADBE,3.72,investment_bank,financials
+Morgan Stanley,TMUS,0.96,investment_bank,financials
+Morgan Stanley,NOW,2.64,investment_bank,financials
+Morgan Stanley,COST,1.7,investment_bank,financials
+Morgan Stanley,BLK,9.9,investment_bank,financials
+Morgan Stanley,MA,1.03,investment_bank,financials
+Morgan Stanley,CRM,2.46,investment_bank,financials
+Morgan Stanley,MSFT,2.99,investment_bank,financials
+Morgan Stanley,AMGN,1.04,investment_bank,financials
+Morgan Stanley,T,0.6,investment_bank,financials
+Morgan Stanley,GOOGL,0.89,investment_bank,financials
+Morgan Stanley,CVS,1.59,investment_bank,financials
+Morgan Stanley,HON,3.73,investment_bank,financials
+Morgan Stanley,MRK,2.16,investment_bank,financials
+Morgan Stanley,MS,0.22,investment_bank,financials
+Morgan Stanley,SCHW,0.47,investment_bank,financials
+Morgan Stanley,GE,2.42,investment_bank,financials
+Morgan Stanley,DFS,0.5,investment_bank,financials
+Morgan Stanley,BAC,0.13,investment_bank,financials
+Morgan Stanley,DIS,0.19,investment_bank,financials
+Morgan Stanley,WMT,1.3,investment_bank,financials
+Morgan Stanley,LLY,2.49,investment_bank,financials
+Morgan Stanley,CVX,0.53,investment_bank,financials
+Morgan Stanley,CAT,2.5,investment_bank,financials
+Morgan Stanley,PYPL,0.53,investment_bank,financials
+Morgan Stanley,SBUX,8.93,investment_bank,financials
+Morgan Stanley,PEP,5.95,investment_bank,financials
+J.P. Morgan,PG,0.8,investment_bank,financials
+J.P. Morgan,DE,4.6,investment_bank,financials
+J.P. Morgan,C,0.64,investment_bank,financials
+J.P. Morgan,V,1.49,investment_bank,financials
+J.P. Morgan,GS,0.23,investment_bank,financials
+J.P. Morgan,TGT,0.53,investment_bank,financials
+J.P. Morgan,TMO,3.87,investment_bank,financials
+J.P. Morgan,WFC,0.6,investment_bank,financials
+J.P. Morgan,BA,0.61,investment_bank,financials
+J.P. Morgan,NVDA,1.69,investment_bank,financials
+J.P. Morgan,CSCO,0.16,investment_bank,financials
+J.P. Morgan,SLB,2.05,investment_bank,financials
+J.P. Morgan,JPM,3.67,investment_bank,financials
+J.P. Morgan,NFLX,0.97,investment_bank,financials
+J.P. Morgan,UNH,0.48,investment_bank,financials
+J.P. Morgan,COST,0.86,investment_bank,financials
+J.P. Morgan,JNJ,1.04,investment_bank,financials
+J.P. Morgan,BLK,6.08,investment_bank,financials
+J.P. Morgan,MA,0.65,investment_bank,financials
+J.P. Morgan,CRM,3.4,investment_bank,financials
+J.P. Morgan,MSFT,1.01,investment_bank,financials
+J.P. Morgan,QCOM,4.43,investment_bank,financials
+J.P. Morgan,REGN,2.22,investment_bank,financials
+J.P. Morgan,HON,4.5,investment_bank,financials
+J.P. Morgan,MRK,10.37,investment_bank,financials
+J.P. Morgan,MS,0.37,investment_bank,financials
+J.P. Morgan,AMD,1.1,investment_bank,financials
+J.P. Morgan,SCHW,1.27,investment_bank,financials
+J.P. Morgan,GE,1.3,investment_bank,financials
+J.P. Morgan,LMT,2.72,investment_bank,financials
+J.P. Morgan,SQ,7.74,investment_bank,financials
+J.P. Morgan,BAC,0.4,investment_bank,financials
+J.P. Morgan,COP,6.87,investment_bank,financials
+J.P. Morgan,DHR,1.61,investment_bank,financials
+J.P. Morgan,USB,4.54,investment_bank,financials
+J.P. Morgan,LLY,3.58,investment_bank,financials
+J.P. Morgan,CVX,1.57,investment_bank,financials
+J.P. Morgan,PYPL,3.97,investment_bank,financials
+J.P. Morgan,SBUX,0.65,investment_bank,financials
+J.P. Morgan,HD,3.09,investment_bank,financials
+J.P. Morgan,AVGO,2.09,investment_bank,financials
+Goldman Sachs,DE,0.18,investment_bank,financials
+Goldman Sachs,AXP,11.45,investment_bank,financials
+Goldman Sachs,MMM,2.5,investment_bank,financials
+Goldman Sachs,C,5.24,investment_bank,financials
+Goldman Sachs,V,0.31,investment_bank,financials
+Goldman Sachs,GS,5.24,investment_bank,financials
+Goldman Sachs,VRTX,1.19,investment_bank,financials
+Goldman Sachs,AAPL,3.81,investment_bank,financials
+Goldman Sachs,INTC,2.51,investment_bank,financials
+Goldman Sachs,WFC,2.63,investment_bank,financials
+Goldman Sachs,NFLX,1.27,investment_bank,financials
+Goldman Sachs,JPM,5.98,investment_bank,financials
+Goldman Sachs,PNC,1.14,investment_bank,financials
+Goldman Sachs,TMUS,3.19,investment_bank,financials
+Goldman Sachs,UNH,2.12,investment_bank,financials
+Goldman Sachs,NOW,1.48,investment_bank,financials
+Goldman Sachs,BLK,6.66,investment_bank,financials
+Goldman Sachs,MA,4.07,investment_bank,financials
+Goldman Sachs,RTX,2.18,investment_bank,financials
+Goldman Sachs,GOOGL,0.51,investment_bank,financials
+Goldman Sachs,CVS,1.53,investment_bank,financials
+Goldman Sachs,MS,3.92,investment_bank,financials
+Goldman Sachs,AMD,4.42,investment_bank,financials
+Goldman Sachs,SCHW,6.1,investment_bank,financials
+Goldman Sachs,GE,2.39,investment_bank,financials
+Goldman Sachs,EOG,3.48,investment_bank,financials
+Goldman Sachs,BIIB,3.53,investment_bank,financials
+Goldman Sachs,BAC,3.83,investment_bank,financials
+Goldman Sachs,PFE,2.99,investment_bank,financials
+Goldman Sachs,CAT,0.19,investment_bank,financials
+Goldman Sachs,SBUX,2.34,investment_bank,financials
+Goldman Sachs,IBM,1.11,investment_bank,financials
+Goldman Sachs,AVGO,0.43,investment_bank,financials
+Vanguard,VZ,1.79,index_passive,broad_market
+Vanguard,CSCO,0.59,index_passive,broad_market
+Vanguard,ADBE,0.35,index_passive,broad_market
+Vanguard,UNH,4.33,index_passive,broad_market
+Vanguard,TMUS,6.5,index_passive,broad_market
+Vanguard,HON,0.82,index_passive,broad_market
+Vanguard,SCHW,0.59,index_passive,broad_market
+Vanguard,KO,0.61,index_passive,broad_market
+Vanguard,LMT,3.54,index_passive,broad_market
+Vanguard,PYPL,0.22,index_passive,broad_market
+Vanguard,AXP,0.41,index_passive,broad_market
+Vanguard,TSLA,0.15,index_passive,broad_market
+Vanguard,AAPL,0.95,index_passive,broad_market
+Vanguard,WFC,0.17,index_passive,broad_market
+Vanguard,LOW,0.68,index_passive,broad_market
+Vanguard,NFLX,0.21,index_passive,broad_market
+Vanguard,PNC,2.2,index_passive,broad_market
+Vanguard,MRNA,0.56,index_passive,broad_market
+Vanguard,AMGN,0.28,index_passive,broad_market
+Vanguard,REGN,4.12,index_passive,broad_market
+Vanguard,RTX,1.32,index_passive,broad_market
+Vanguard,MRK,2.25,index_passive,broad_market
+Vanguard,GE,0.51,index_passive,broad_market
+Vanguard,AMZN,1.39,index_passive,broad_market
+Vanguard,DFS,0.93,index_passive,broad_market
+Vanguard,DHR,1.47,index_passive,broad_market
+Vanguard,CVX,1.66,index_passive,broad_market
+Vanguard,XOM,6.78,index_passive,broad_market
+Vanguard,ABT,0.74,index_passive,broad_market
+Vanguard,DE,3.16,index_passive,broad_market
+Vanguard,GILD,1.64,index_passive,broad_market
+Vanguard,VRTX,0.1,index_passive,broad_market
+Vanguard,TGT,0.3,index_passive,broad_market
+Vanguard,INTC,0.34,index_passive,broad_market
+Vanguard,BA,3.34,index_passive,broad_market
+Vanguard,NVDA,0.3,index_passive,broad_market
+Vanguard,COF,1.51,index_passive,broad_market
+Vanguard,SLB,0.21,index_passive,broad_market
+Vanguard,COST,1.28,index_passive,broad_market
+Vanguard,BLK,0.94,index_passive,broad_market
+Vanguard,CRM,0.38,index_passive,broad_market
+Vanguard,MSFT,6.49,index_passive,broad_market
+Vanguard,GOOGL,1.98,index_passive,broad_market
+Vanguard,WMT,0.37,index_passive,broad_market
+Vanguard,IBM,0.14,index_passive,broad_market
+Vanguard,PEP,1.04,index_passive,broad_market
+Vanguard,AVGO,1.04,index_passive,broad_market
+Vanguard,PG,0.43,index_passive,broad_market
+Vanguard,C,1.81,index_passive,broad_market
+Vanguard,GS,2.25,index_passive,broad_market
+Vanguard,TMO,1.91,index_passive,broad_market
+Vanguard,NOW,0.9,index_passive,broad_market
+Vanguard,MA,0.39,index_passive,broad_market
+Vanguard,QCOM,0.38,index_passive,broad_market
+Vanguard,T,1.07,index_passive,broad_market
+Vanguard,AMD,1.73,index_passive,broad_market
+Vanguard,CMCSA,1.18,index_passive,broad_market
+Vanguard,META,1.37,index_passive,broad_market
+Vanguard,BIIB,0.73,index_passive,broad_market
+Vanguard,SQ,3.43,index_passive,broad_market
+Vanguard,ORCL,0.5,index_passive,broad_market
+Vanguard,BAC,0.89,index_passive,broad_market
+Vanguard,PFE,1.7,index_passive,broad_market
+Vanguard,DIS,0.13,index_passive,broad_market
+Vanguard,NKE,0.4,index_passive,broad_market
+Vanguard,SBUX,0.41,index_passive,broad_market
+Vanguard,HD,7.42,index_passive,broad_market
+UBS,MMM,2.81,wealth_management,conservative
+UBS,VZ,1.98,wealth_management,conservative
+UBS,CSCO,2.88,wealth_management,conservative
+UBS,ADBE,0.94,wealth_management,conservative
+UBS,UNH,0.78,wealth_management,conservative
+UBS,TMUS,0.55,wealth_management,conservative
+UBS,HON,1.76,wealth_management,conservative
+UBS,SCHW,0.35,wealth_management,conservative
+UBS,KO,0.39,wealth_management,conservative
+UBS,EOG,0.12,wealth_management,conservative
+UBS,LMT,1.51,wealth_management,conservative
+UBS,PYPL,2.08,wealth_management,conservative
+UBS,AXP,0.29,wealth_management,conservative
+UBS,TSLA,4.47,wealth_management,conservative
+UBS,AAPL,0.17,wealth_management,conservative
+UBS,WFC,0.16,wealth_management,conservative
+UBS,LOW,0.17,wealth_management,conservative
+UBS,NFLX,2.91,wealth_management,conservative
+UBS,AMGN,1.87,wealth_management,conservative
+UBS,REGN,0.55,wealth_management,conservative
+UBS,RTX,1.43,wealth_management,conservative
+UBS,MRK,2.78,wealth_management,conservative
+UBS,AMZN,2.12,wealth_management,conservative
+UBS,GE,2.6,wealth_management,conservative
+UBS,DFS,1.35,wealth_management,conservative
+UBS,DHR,0.17,wealth_management,conservative
+UBS,CVX,1.55,wealth_management,conservative
+UBS,XOM,0.94,wealth_management,conservative
+UBS,DE,3.42,wealth_management,conservative
+UBS,ABT,2.3,wealth_management,conservative
+UBS,GILD,0.28,wealth_management,conservative
+UBS,TGT,0.47,wealth_management,conservative
+UBS,VRTX,0.22,wealth_management,conservative
+UBS,INTC,2.08,wealth_management,conservative
+UBS,COF,0.53,wealth_management,conservative
+UBS,NVDA,3.36,wealth_management,conservative
+UBS,BA,0.5,wealth_management,conservative
+UBS,SLB,1.97,wealth_management,conservative
+UBS,JPM,2.51,wealth_management,conservative
+UBS,MCD,0.55,wealth_management,conservative
+UBS,COST,2.72,wealth_management,conservative
+UBS,BLK,1.17,wealth_management,conservative
+UBS,CRM,0.68,wealth_management,conservative
+UBS,MSFT,2.61,wealth_management,conservative
+UBS,GOOGL,0.56,wealth_management,conservative
+UBS,TXN,2.03,wealth_management,conservative
+UBS,COP,0.81,wealth_management,conservative
+UBS,WMT,0.75,wealth_management,conservative
+UBS,USB,0.33,wealth_management,conservative
+UBS,LLY,0.76,wealth_management,conservative
+UBS,CAT,2.17,wealth_management,conservative
+UBS,IBM,2.22,wealth_management,conservative
+UBS,PEP,0.21,wealth_management,conservative
+UBS,AVGO,1.71,wealth_management,conservative
+UBS,PG,0.2,wealth_management,conservative
+UBS,C,1.61,wealth_management,conservative
+UBS,V,0.59,wealth_management,conservative
+UBS,TMO,0.22,wealth_management,conservative
+UBS,NOW,0.84,wealth_management,conservative
+UBS,MA,0.2,wealth_management,conservative
+UBS,QCOM,0.72,wealth_management,conservative
+UBS,T,0.17,wealth_management,conservative
+UBS,CVS,0.6,wealth_management,conservative
+UBS,MS,1.3,wealth_management,conservative
+UBS,AMD,1.51,wealth_management,conservative
+UBS,META,3.36,wealth_management,conservative
+UBS,BIIB,4.83,wealth_management,conservative
+UBS,ORCL,0.94,wealth_management,conservative
+UBS,BAC,0.28,wealth_management,conservative
+UBS,SQ,0.56,wealth_management,conservative
+UBS,PFE,0.67,wealth_management,conservative
+UBS,NKE,2.3,wealth_management,conservative
+UBS,SBUX,0.95,wealth_management,conservative
+UBS,HD,1.24,wealth_management,conservative
+T. Rowe Price,MMM,0.14,active_equity,growth
+T. Rowe Price,C,1.17,active_equity,growth
+T. Rowe Price,TSLA,7.38,active_equity,growth
+T. Rowe Price,VZ,4.88,active_equity,growth
+T. Rowe Price,GS,1.29,active_equity,growth
+T. Rowe Price,TGT,4.05,active_equity,growth
+T. Rowe Price,VRTX,2.43,active_equity,growth
+T. Rowe Price,AAPL,1.95,active_equity,growth
+T. Rowe Price,TMO,1.1,active_equity,growth
+T. Rowe Price,COF,4.52,active_equity,growth
+T. Rowe Price,NVDA,5.06,active_equity,growth
+T. Rowe Price,BA,0.31,active_equity,growth
+T. Rowe Price,NFLX,0.67,active_equity,growth
+T. Rowe Price,MCD,1.82,active_equity,growth
+T. Rowe Price,ADBE,0.44,active_equity,growth
+T. Rowe Price,UNH,0.7,active_equity,growth
+T. Rowe Price,COST,0.26,active_equity,growth
+T. Rowe Price,BLK,1.94,active_equity,growth
+T. Rowe Price,MA,4.25,active_equity,growth
+T. Rowe Price,CRM,6.94,active_equity,growth
+T. Rowe Price,MSFT,1.26,active_equity,growth
+T. Rowe Price,QCOM,6.17,active_equity,growth
+T. Rowe Price,RTX,1.51,active_equity,growth
+T. Rowe Price,REGN,1.35,active_equity,growth
+T. Rowe Price,HON,2.2,active_equity,growth
+T. Rowe Price,CVS,12.26,active_equity,growth
+T. Rowe Price,CMCSA,1.23,active_equity,growth
+T. Rowe Price,AMZN,6.65,active_equity,growth
+T. Rowe Price,TXN,1.53,active_equity,growth
+T. Rowe Price,DFS,2.89,active_equity,growth
+T. Rowe Price,META,0.27,active_equity,growth
+T. Rowe Price,BIIB,4.93,active_equity,growth
+T. Rowe Price,LMT,0.88,active_equity,growth
+T. Rowe Price,DIS,0.32,active_equity,growth
+T. Rowe Price,DHR,1.01,active_equity,growth
+T. Rowe Price,CAT,0.56,active_equity,growth
+T. Rowe Price,IBM,0.94,active_equity,growth
+T. Rowe Price,XOM,2.66,active_equity,growth
