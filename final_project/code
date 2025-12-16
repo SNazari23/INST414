@@ -1,0 +1,576 @@
+import pandas as pd
+import numpy as np
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import silhouette_score
+import warnings
+warnings.filterwarnings('ignore')
+
+class InvestmentFirmClusterAnalyzer:
+    def __init__(self, data_dir='investment_firm_data'):
+        self.data_dir = data_dir
+        self.industry_mapping = self.create_industry_mapping()
+        
+    def create_industry_mapping(self):
+        """Create a mapping of stocks to industries"""
+        industry_mapping = {
+            # Technology
+            'AAPL': 'Technology', 'MSFT': 'Technology', 'GOOGL': 'Technology', 
+            'AMZN': 'Technology', 'META': 'Technology', 'NVDA': 'Technology',
+            'TSLA': 'Technology', 'AVGO': 'Technology', 'ORCL': 'Technology',
+            'ADBE': 'Technology', 'CRM': 'Technology', 'CSCO': 'Technology',
+            'INTC': 'Technology', 'AMD': 'Technology', 'QCOM': 'Technology',
+            'TXN': 'Technology', 'IBM': 'Technology', 'NOW': 'Technology',
+            
+            # Financial Services
+            'JPM': 'Financial', 'BAC': 'Financial', 'WFC': 'Financial', 
+            'C': 'Financial', 'GS': 'Financial', 'MS': 'Financial', 
+            'SCHW': 'Financial', 'BLK': 'Financial', 'AXP': 'Financial', 
+            'V': 'Financial', 'MA': 'Financial', 'PYPL': 'Financial',
+            'SQ': 'Financial', 'DFS': 'Financial', 'COF': 'Financial',
+            'USB': 'Financial', 'PNC': 'Financial',
+            
+            # Healthcare
+            'JNJ': 'Healthcare', 'PFE': 'Healthcare', 'MRK': 'Healthcare',
+            'ABT': 'Healthcare', 'TMO': 'Healthcare', 'DHR': 'Healthcare',
+            'LLY': 'Healthcare', 'UNH': 'Healthcare', 'CVS': 'Healthcare',
+            'GILD': 'Healthcare', 'AMGN': 'Healthcare', 'BIIB': 'Healthcare',
+            'REGN': 'Healthcare', 'VRTX': 'Healthcare', 'MRNA': 'Healthcare',
+            
+            # Consumer
+            'PG': 'Consumer', 'KO': 'Consumer', 'PEP': 'Consumer',
+            'WMT': 'Consumer', 'TGT': 'Consumer', 'COST': 'Consumer',
+            'HD': 'Consumer', 'LOW': 'Consumer', 'NKE': 'Consumer',
+            'MCD': 'Consumer', 'SBUX': 'Consumer', 'DIS': 'Consumer',
+            'NFLX': 'Consumer', 'CMCSA': 'Consumer', 'T': 'Consumer',
+            'VZ': 'Consumer', 'TMUS': 'Consumer',
+            
+            # Industrial & Energy
+            'XOM': 'Energy', 'CVX': 'Energy', 'COP': 'Energy',
+            'SLB': 'Energy', 'EOG': 'Energy', 'BA': 'Industrial',
+            'LMT': 'Industrial', 'RTX': 'Industrial', 'HON': 'Industrial',
+            'CAT': 'Industrial', 'DE': 'Industrial', 'GE': 'Industrial',
+            'MMM': 'Industrial'
+        }
+        return industry_mapping
+    
+    def load_and_prepare_data(self):
+        """Load the CSV files and prepare for clustering"""
+        print("Loading and preparing data...")
+        
+        # Load firm holdings data
+        holdings_df = pd.read_csv(f'{self.data_dir}/firm_holdings.csv')
+        
+        # Load firm summary data
+        firm_summary_df = pd.read_csv(f'{self.data_dir}/firm_summary.csv')
+        
+        # Add industry information to holdings
+        holdings_df['industry'] = holdings_df['stock'].map(self.industry_mapping)
+        
+        return holdings_df, firm_summary_df
+    
+    def create_firm_industry_profile(self, holdings_df):
+        """Create industry exposure profiles for each firm"""
+        print("Creating industry exposure profiles...")
+        
+        # Calculate total investment per firm per industry
+        industry_exposure = holdings_df.groupby(['firm', 'industry'])['weight_percentage'].sum().reset_index()
+        
+        # Pivot to get firm-industry matrix
+        firm_industry_matrix = industry_exposure.pivot(
+            index='firm', 
+            columns='industry', 
+            values='weight_percentage'
+        ).fillna(0)
+        
+        # Calculate industry concentration metrics
+        for firm in firm_industry_matrix.index:
+            total = firm_industry_matrix.loc[firm].sum()
+            if total > 0:
+                firm_industry_matrix.loc[firm] = firm_industry_matrix.loc[firm] / total * 100
+        
+        return firm_industry_matrix
+    
+    def perform_kmeans_clustering(self, firm_industry_matrix, n_clusters=4):
+        """Perform K-means clustering on firm industry profiles"""
+        print(f"\nPerforming K-means clustering with {n_clusters} clusters...")
+        
+        # Standardize the data
+        scaler = StandardScaler()
+        scaled_data = scaler.fit_transform(firm_industry_matrix)
+        
+        # Perform K-means clustering
+        kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+        cluster_labels = kmeans.fit_predict(scaled_data)
+        
+        # Add cluster labels to the dataframe
+        firm_industry_matrix = firm_industry_matrix.copy()
+        firm_industry_matrix['cluster'] = cluster_labels
+        
+        # Calculate silhouette score
+        silhouette_avg = silhouette_score(scaled_data, cluster_labels)
+        print(f"Silhouette Score: {silhouette_avg:.3f}")
+        
+        return firm_industry_matrix, kmeans, scaled_data
+    
+    def determine_optimal_clusters(self, scaled_data, max_clusters=8):
+        """Determine optimal number of clusters using elbow method and silhouette score"""
+        print("\nDetermining optimal number of clusters...")
+        
+        distortions = []
+        silhouette_scores = []
+        K_range = range(2, max_clusters + 1)
+        
+        for k in K_range:
+            kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+            kmeans.fit(scaled_data)
+            distortions.append(kmeans.inertia_)
+            silhouette_scores.append(silhouette_score(scaled_data, kmeans.labels_))
+        
+        # Plot elbow method
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+        
+        ax1.plot(K_range, distortions, 'bo-')
+        ax1.set_xlabel('Number of Clusters (k)')
+        ax1.set_ylabel('Distortion (Inertia)')
+        ax1.set_title('Elbow Method for Optimal k')
+        ax1.grid(True, alpha=0.3)
+        
+        ax2.plot(K_range, silhouette_scores, 'ro-')
+        ax2.set_xlabel('Number of Clusters (k)')
+        ax2.set_ylabel('Silhouette Score')
+        ax2.set_title('Silhouette Score for Different k')
+        ax2.grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        plt.show()
+        
+        # Find optimal k (highest silhouette score)
+        optimal_k = K_range[np.argmax(silhouette_scores)]
+        print(f"Optimal number of clusters based on silhouette score: {optimal_k}")
+        
+        return optimal_k
+    
+    def analyze_clusters(self, firm_industry_matrix, firm_summary_df):
+        """Analyze and interpret the clusters"""
+        print("\n" + "="*60)
+        print("CLUSTER ANALYSIS")
+        print("="*60)
+        
+        # Merge with firm summary data
+        cluster_df = firm_industry_matrix[['cluster']].merge(
+            firm_summary_df, 
+            left_index=True, 
+            right_on='firm'
+        )
+        
+        # Analyze each cluster
+        clusters = sorted(cluster_df['cluster'].unique())
+        
+        for cluster_num in clusters:
+            cluster_firms = cluster_df[cluster_df['cluster'] == cluster_num]
+            
+            print(f"\nCluster {cluster_num}: {len(cluster_firms)} firms")
+            print("-" * 40)
+            
+            # List firms in cluster
+            print("Firms:", ", ".join(cluster_firms['firm'].tolist()))
+            
+            # Calculate average characteristics
+            avg_stocks = cluster_firms['total_stocks_held'].mean()
+            avg_concentration = cluster_firms['portfolio_concentration'].mean()
+            
+            print(f"Average stocks held per firm: {avg_stocks:.1f}")
+            print(f"Average portfolio concentration: {avg_concentration:.3f}")
+            
+            # Most common investment style in cluster
+            common_style = cluster_firms['investment_style'].mode()[0]
+            print(f"Dominant investment style: {common_style}")
+            
+            # Most common sector bias
+            common_bias = cluster_firms['sector_bias'].mode()[0]
+            print(f"Dominant sector bias: {common_bias}")
+            
+            # Get industry exposure for this cluster
+            cluster_industries = firm_industry_matrix.loc[
+                firm_industry_matrix['cluster'] == cluster_num
+            ].drop('cluster', axis=1)
+            
+            if not cluster_industries.empty:
+                avg_industry_exposure = cluster_industries.mean().sort_values(ascending=False)
+                print("\nAverage Industry Exposure:")
+                for industry, exposure in avg_industry_exposure.head(3).items():
+                    print(f"  {industry}: {exposure:.1f}%")
+        
+        return cluster_df
+    
+    def visualize_clusters(self, firm_industry_matrix, scaled_data):
+        """Visualize the clusters using PCA"""
+        print("\nVisualizing clusters with PCA...")
+        
+        # Reduce dimensions for visualization
+        pca = PCA(n_components=2)
+        pca_result = pca.fit_transform(scaled_data)
+        
+        # Create DataFrame for plotting
+        plot_df = pd.DataFrame({
+            'PCA1': pca_result[:, 0],
+            'PCA2': pca_result[:, 1],
+            'Cluster': firm_industry_matrix['cluster'],
+            'Firm': firm_industry_matrix.index
+        })
+        
+        # Calculate explained variance
+        explained_variance = pca.explained_variance_ratio_
+        
+        # Plot clusters
+        plt.figure(figsize=(12, 8))
+        
+        # Create scatter plot with colors
+        scatter = plt.scatter(
+            plot_df['PCA1'], 
+            plot_df['PCA2'], 
+            c=plot_df['Cluster'], 
+            cmap='tab10', 
+            s=200, 
+            alpha=0.7,
+            edgecolors='black'
+        )
+        
+        # Add firm labels
+        for i, row in plot_df.iterrows():
+            plt.annotate(
+                row['Firm'], 
+                (row['PCA1'], row['PCA2']),
+                fontsize=9,
+                ha='center',
+                va='center'
+            )
+        
+        plt.title(f'K-means Clustering of Investment Firms (PCA Reduced)\n'
+                  f'Explained Variance: {explained_variance[0]:.1%} (PCA1), {explained_variance[1]:.1%} (PCA2)',
+                  fontsize=14)
+        plt.xlabel(f'Principal Component 1 ({explained_variance[0]:.1%})')
+        plt.ylabel(f'Principal Component 2 ({explained_variance[1]:.1%})')
+        
+        # Add legend for clusters
+        legend_elements = scatter.legend_elements()[0]
+        plt.legend(legend_elements, 
+                  [f'Cluster {i}' for i in range(len(legend_elements))],
+                  title="Clusters",
+                  loc='upper right')
+        
+        plt.grid(True, alpha=0.3)
+        plt.tight_layout()
+        
+        # Save the visualization
+        plt.savefig(f'{self.data_dir}/firm_clusters_pca.png', dpi=300, bbox_inches='tight')
+        plt.show()
+        
+        # Create heatmap of industry exposures by cluster
+        self.create_cluster_heatmap(firm_industry_matrix)
+    
+    def create_cluster_heatmap(self, firm_industry_matrix):
+        """Create a heatmap showing industry exposure by cluster"""
+        # Calculate average industry exposure per cluster
+        cluster_industry_avg = firm_industry_matrix.groupby('cluster').mean()
+        
+        # Sort clusters and industries for better visualization
+        cluster_industry_avg = cluster_industry_avg.sort_index()
+        
+        plt.figure(figsize=(12, 8))
+        
+        # Create heatmap
+        sns.heatmap(
+            cluster_industry_avg.T,
+            annot=True,
+            fmt='.1f',
+            cmap='YlOrRd',
+            center=cluster_industry_avg.values.mean(),
+            cbar_kws={'label': 'Average Industry Exposure (%)'},
+            linewidths=1,
+            linecolor='gray'
+        )
+        
+        plt.title('Average Industry Exposure by Cluster', fontsize=14, pad=20)
+        plt.xlabel('Cluster')
+        plt.ylabel('Industry')
+        
+        plt.tight_layout()
+        plt.savefig(f'{self.data_dir}/cluster_industry_heatmap.png', dpi=300, bbox_inches='tight')
+        plt.show()
+    
+    def create_cluster_profiles_report(self, cluster_df, firm_industry_matrix):
+        """Create a detailed report of each cluster's characteristics"""
+        print("\n" + "="*60)
+        print("DETAILED CLUSTER PROFILES")
+        print("="*60)
+        
+        # Calculate average industry exposure for each cluster
+        cluster_industry_avg = firm_industry_matrix.groupby('cluster').mean()
+        
+        clusters = sorted(cluster_df['cluster'].unique())
+        
+        for cluster_num in clusters:
+            cluster_firms = cluster_df[cluster_df['cluster'] == cluster_num]
+            
+            print(f"\n{'='*50}")
+            print(f"CLUSTER {cluster_num} PROFILE")
+            print(f"{'='*50}")
+            
+            # Basic statistics
+            print(f"\nFirms ({len(cluster_firms)}):")
+            for firm in cluster_firms['firm'].tolist():
+                print(f"  • {firm}")
+            
+            print(f"\nInvestment Style Distribution:")
+            style_counts = cluster_firms['investment_style'].value_counts()
+            for style, count in style_counts.items():
+                percentage = (count / len(cluster_firms)) * 100
+                print(f"  {style}: {count} firms ({percentage:.0f}%)")
+            
+            print(f"\nSector Bias Distribution:")
+            bias_counts = cluster_firms['sector_bias'].value_counts()
+            for bias, count in bias_counts.items():
+                percentage = (count / len(cluster_firms)) * 100
+                print(f"  {bias}: {count} firms ({percentage:.0f}%)")
+            
+            print(f"\nPortfolio Characteristics:")
+            print(f"  Average stocks held: {cluster_firms['total_stocks_held'].mean():.1f}")
+            print(f"  Average concentration: {cluster_firms['portfolio_concentration'].mean():.3f}")
+            
+            # Industry exposure
+            print(f"\nIndustry Exposure (Top 3):")
+            industry_exposure = cluster_industry_avg.loc[cluster_num].sort_values(ascending=False)
+            for industry, exposure in industry_exposure.head(3).items():
+                print(f"  {industry}: {exposure:.1f}%")
+            
+            # Most unique characteristic
+            if not industry_exposure.empty:
+                most_overweight = industry_exposure.idxmax()
+                most_underweight = industry_exposure.idxmin()
+                print(f"\nMost Unique Characteristics:")
+                print(f"  Most overweight in: {most_overweight} ({industry_exposure[most_overweight]:.1f}%)")
+                print(f"  Most underweight in: {most_underweight} ({industry_exposure[most_underweight]:.1f}%)")
+        
+        # Save cluster profiles to CSV
+        cluster_profiles = []
+        for cluster_num in clusters:
+            cluster_firms = cluster_df[cluster_df['cluster'] == cluster_num]
+            avg_stocks = cluster_firms['total_stocks_held'].mean()
+            avg_concentration = cluster_firms['portfolio_concentration'].mean()
+            dominant_style = cluster_firms['investment_style'].mode()[0]
+            dominant_bias = cluster_firms['sector_bias'].mode()[0]
+            
+            profile = {
+                'cluster': cluster_num,
+                'number_of_firms': len(cluster_firms),
+                'firms': ', '.join(cluster_firms['firm'].tolist()),
+                'dominant_investment_style': dominant_style,
+                'dominant_sector_bias': dominant_bias,
+                'average_stocks_held': avg_stocks,
+                'average_portfolio_concentration': avg_concentration,
+                'investment_styles': ', '.join(cluster_firms['investment_style'].unique()),
+                'sector_biases': ', '.join(cluster_firms['sector_bias'].unique())
+            }
+            
+            # Add industry exposures
+            industry_exposure = cluster_industry_avg.loc[cluster_num].sort_values(ascending=False)
+            for i, (industry, exposure) in enumerate(industry_exposure.head(3).items(), 1):
+                profile[f'top_industry_{i}'] = industry
+                profile[f'top_industry_{i}_exposure'] = exposure
+            
+            cluster_profiles.append(profile)
+        
+        cluster_profiles_df = pd.DataFrame(cluster_profiles)
+        cluster_profiles_df.to_csv(f'{self.data_dir}/cluster_profiles.csv', index=False)
+        print(f"\nCluster profiles saved to '{self.data_dir}/cluster_profiles.csv'")
+        
+        return cluster_profiles_df
+    
+    def run_full_analysis(self, n_clusters=None):
+        """Run the complete clustering analysis"""
+        print("="*60)
+        print("INVESTMENT FIRM CLUSTERING ANALYSIS")
+        print("="*60)
+        
+        # Load and prepare data
+        holdings_df, firm_summary_df = self.load_and_prepare_data()
+        
+        # Create firm industry profiles
+        firm_industry_matrix = self.create_firm_industry_profile(holdings_df)
+        
+        # Scale the data
+        scaler = StandardScaler()
+        scaled_data = scaler.fit_transform(firm_industry_matrix)
+        
+        # Determine optimal number of clusters if not specified
+        if n_clusters is None:
+            n_clusters = self.determine_optimal_clusters(scaled_data)
+        
+        # Perform clustering
+        firm_industry_matrix, kmeans, scaled_data = self.perform_kmeans_clustering(
+            firm_industry_matrix, n_clusters
+        )
+        
+        # Analyze clusters
+        cluster_df = self.analyze_clusters(firm_industry_matrix, firm_summary_df)
+        
+        # Visualize clusters
+        self.visualize_clusters(firm_industry_matrix, scaled_data)
+        
+        # Create detailed cluster profiles
+        cluster_profiles_df = self.create_cluster_profiles_report(cluster_df, firm_industry_matrix)
+        
+        # Save clustered data
+        firm_industry_matrix.to_csv(f'{self.data_dir}/firm_industry_clusters.csv')
+        print(f"\nClustered data saved to '{self.data_dir}/firm_industry_clusters.csv'")
+        
+        return {
+            'firm_industry_matrix': firm_industry_matrix,
+            'cluster_df': cluster_df,
+            'kmeans': kmeans,
+            'cluster_profiles': cluster_profiles_df
+        }
+def visualize_kmeans_decision_boundaries(self, firm_industry_matrix, scaled_data, kmeans):
+    """
+    Visualize K-means clusters with decision boundaries (sklearn-style)
+    using PCA-reduced 2D space.
+    """
+    print("\nVisualizing K-means decision boundaries (PCA space)...")
+
+    # Reduce to 2D
+    pca = PCA(n_components=2, random_state=42)
+    X_pca = pca.fit_transform(scaled_data)
+
+    # IMPORTANT:
+    # Re-fit KMeans in PCA space for visualization only
+    kmeans_pca = KMeans(
+        n_clusters=kmeans.n_clusters,
+        random_state=42,
+        n_init=10
+    )
+    labels_pca = kmeans_pca.fit_predict(X_pca)
+
+    # Create meshgrid (decision surface)
+    h = 0.02
+    x_min, x_max = X_pca[:, 0].min() - 1, X_pca[:, 0].max() + 1
+    y_min, y_max = X_pca[:, 1].min() - 1, X_pca[:, 1].max() + 1
+
+    xx, yy = np.meshgrid(
+        np.arange(x_min, x_max, h),
+        np.arange(y_min, y_max, h)
+    )
+
+    Z = kmeans_pca.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
+
+    # Plot decision boundaries
+    plt.figure(figsize=(12, 8))
+    plt.imshow(
+        Z,
+        interpolation="nearest",
+        extent=(xx.min(), xx.max(), yy.min(), yy.max()),
+        cmap=plt.cm.tab10,
+        aspect="auto",
+        origin="lower",
+        alpha=0.25
+    )
+
+    # Plot actual points
+    plt.scatter(
+        X_pca[:, 0],
+        X_pca[:, 1],
+        c=labels_pca,
+        cmap=plt.cm.tab10,
+        edgecolor="black",
+        s=120
+    )
+
+    # Plot cluster centers
+    centers = kmeans_pca.cluster_centers_
+    plt.scatter(
+        centers[:, 0],
+        centers[:, 1],
+        marker="X",
+        s=300,
+        linewidths=3,
+        color="black",
+        label="Centroids"
+    )
+
+    # Add firm labels
+    for i, firm in enumerate(firm_industry_matrix.index):
+        plt.text(
+            X_pca[i, 0],
+            X_pca[i, 1],
+            firm,
+            fontsize=9,
+            ha="center",
+            va="center"
+        )
+
+    explained = pca.explained_variance_ratio_
+
+    plt.title(
+        "K-means Clustering with Decision Boundaries (PCA Projection)\n"
+        f"PCA Variance Explained: {explained[0]:.1%}, {explained[1]:.1%}",
+        fontsize=14
+    )
+    plt.xlabel("PCA Component 1")
+    plt.ylabel("PCA Component 2")
+    plt.legend()
+    plt.tight_layout()
+
+    plt.savefig(
+        f"{self.data_dir}/kmeans_decision_boundaries.png",
+        dpi=300,
+        bbox_inches="tight"
+    )
+    plt.show()
+
+# Main execution
+def main():
+        # Initialize the analyzer
+    analyzer = InvestmentFirmClusterAnalyzer(data_dir='investment_firm_data')
+    
+    # Run the full analysis
+    results = analyzer.run_full_analysis(n_clusters=4)  # You can specify number or leave as None for auto
+    
+    # Print final summary
+    print("\n" + "="*60)
+    print("ANALYSIS COMPLETE")
+    print("="*60)
+    print(f"\nGenerated files in 'investment_firm_data' directory:")
+    print("  1. firm_clusters_pca.png - PCA visualization of clusters")
+    print("  2. cluster_industry_heatmap.png - Heatmap of industry exposure")
+    print("  3. cluster_profiles.csv - Detailed cluster characteristics")
+    print("  4. firm_industry_clusters.csv - Clustered firm data")
+    
+    # Show cluster profiles
+    print("\nCluster Summary:")
+    for i, row in results['cluster_profiles'].iterrows():
+        print(f"\nCluster {row['cluster']}: {row['number_of_firms']} firms")
+        print(f"  Firms: {row['firms']}")
+        print(f"  Style: {row['dominant_investment_style']}")
+        print(f"  Bias: {row['dominant_sector_bias']}")
+    analyzer = InvestmentFirmClusterAnalyzer(data_dir='investment_firm_data')
+
+    results = analyzer.run_full_analysis(n_clusters=4)
+
+    print("\n" + "="*60)
+    print("ANALYSIS COMPLETE")
+    print("="*60)
+
+    print("\nCluster Summary:")
+    for _, row in results['cluster_profiles'].iterrows():
+        print(f"\nCluster {row['cluster']}: {row['number_of_firms']} firms")
+        print(f"  Firms: {row['firms']}")
+        print(f"  Style: {row['dominant_investment_style']}")
+        print(f"  Bias: {row['dominant_sector_bias']}")
+
+if __name__ == "__main__":
+    main()
